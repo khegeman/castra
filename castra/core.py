@@ -28,9 +28,9 @@ bp_args = bloscpack.BloscpackArgs(offsets=False, checksum='None')
 
 def blosc_args(dt):
     if np.issubdtype(dt, int):
-        return bloscpack.BloscArgs(dt.itemsize, clevel=3, shuffle=True)
+        return bloscpack.BloscArgs(dt.itemsize, clevel=9, shuffle=blosc.SHUFFLE)
     if np.issubdtype(dt, np.datetime64):
-        return bloscpack.BloscArgs(dt.itemsize, clevel=3, shuffle=True)
+        return bloscpack.BloscArgs(dt.itemsize, clevel=9, shuffle=blosc.SHUFFLE)
     if np.issubdtype(dt, float):
         return bloscpack.BloscArgs(dt.itemsize, clevel=1, shuffle=False)
     return None
